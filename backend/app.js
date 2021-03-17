@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+const Sauce = require('./models/Sauce');
+const User = require('./models/User');
+
+const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://ttexier:ttexier@cluster0.lwwrz.mongodb.net/sopekocko?retryWrites=true&w=majority', {
         useNewUrlParser: true,
@@ -16,23 +22,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    console.log('Requête reçue !');
-    next();
-});
-
-app.use((req, res, next) => {
-    res.status(201);
-    next();
-});
-
-app.use((req, res, next) => {
-    res.json({ message: 'Votre requête a bien été reçue !' });
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('Réponse envoyée avec succès !');
-});
+app.use(express.json());
 
 module.exports = app;
+
+app.use('/api/auth', userRoutes);
