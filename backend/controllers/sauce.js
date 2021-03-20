@@ -63,8 +63,7 @@ exports.opinionSauce = (req, res, next) => {
                     if (sauce.usersLiked.find(user => user === req.body.userId)) {
                         Sauce.updateOne({ _id: req.params.id }, {
                                 $inc: { likes: -1 },
-                                $pull: { usersLiked: req.body.userId },
-                                _id: req.params.id
+                                $pull: { usersLiked: req.body.userId }
                             })
                             .then(() => res.status(201).json({ message: 'Ton avis a été pris en compte!' }))
                             .catch(error => res.status(400).json({ error }));
@@ -72,8 +71,7 @@ exports.opinionSauce = (req, res, next) => {
                     if (sauce.usersDisliked.find(user => user === req.body.userId)) {
                         Sauce.updateOne({ _id: req.params.id }, {
                                 $inc: { dislikes: -1 },
-                                $pull: { usersDisliked: req.body.userId },
-                                _id: req.params.id
+                                $pull: { usersDisliked: req.body.userId }
                             })
                             .then(() => res.status(201).json({ message: 'Ton avis a été pris en compte!' }))
                             .catch(error => res.status(400).json({ error }));
