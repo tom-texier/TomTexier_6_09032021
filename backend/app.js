@@ -7,6 +7,7 @@ const Sauce = require('./models/Sauce');
 const User = require('./models/User');
 
 const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce');
 
 mongoose.connect('mongodb+srv://ttexier:ttexier@cluster0.lwwrz.mongodb.net/sopekocko?retryWrites=true&w=majority', {
         useNewUrlParser: true,
@@ -27,3 +28,4 @@ app.use(express.json());
 module.exports = app;
 
 app.use('/api/auth', userRoutes);
+app.use('/api/sauces', sauceRoutes);
