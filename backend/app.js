@@ -1,22 +1,23 @@
+// Importer les packages
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const Sauce = require('./models/Sauce');
-const User = require('./models/User');
-
+// Importer les routes
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
+// Connexion à la base de données
 mongoose.connect('mongodb+srv://ttexier:ttexier@cluster0.lwwrz.mongodb.net/sopekocko?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
     .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+    .catch(() => console.error('Connexion à MongoDB échouée !'));
 
+// Headers pour contourner les erreurs de CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -24,10 +25,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Rendre la requête exploitable
 app.use(express.json());
 
-module.exports = app;
-
+// Servir le dossier image de façon statique
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Routes attendues
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
+
+module.exports = app;
