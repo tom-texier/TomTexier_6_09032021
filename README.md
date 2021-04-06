@@ -19,8 +19,10 @@ cd TomTexier_6_09032021
 cd frontend
 ```
 
-2. Exécutez la commande *`npm install`*<br>
+2. Exécutez la commande *`npm i`*<br>
 Les packages nécessaires doivent donc s'installer.
+
+3. Installez Angular
 
 3. Lancez l'application avec la commande *`ng serve`*<br>
 La console doit afficher le message suivant à la fin :
@@ -36,7 +38,7 @@ Compiled successfully.
 cd ../backend
 ```
 
-2. Exécutez la commande *`npm install`*<br>
+2. Exécutez la commande *`npm i`*<br>
 Les packages nécessaires doivent donc s'installer.
 
 3. Lancez l'application avec la commande *`nodemon server`*<br>
