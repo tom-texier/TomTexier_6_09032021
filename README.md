@@ -22,8 +22,6 @@ cd frontend
 2. Exécutez la commande *`npm i`*<br>
 Les packages nécessaires doivent donc s'installer.
 
-3. Installez Angular
-
 3. Lancez l'application avec la commande *`ng serve`*<br>
 La console doit afficher le message suivant à la fin :
 
