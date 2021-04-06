@@ -8,6 +8,9 @@
 ```
 git clone https://github.com/tom-texier/TomTexier_6_09032021.git
 ```
+```
+cd TomTexier_6_09032021
+```
 
 ### Pour l'application Frontend :
 
