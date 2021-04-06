@@ -4,11 +4,19 @@ const bcrypt = require("bcrypt");
 // Importer le package jsonwebtoken pour la gestion du Token d'authentification
 const jwt = require('jsonwebtoken');
 
+const { validationResult } = require('express-validator');
+
 // Importer le modèle d'un Utilisateur
 const User = require('../models/User');
 
 // Ajouter un utilisateur (Inscription)
 exports.signup = (req, res, next) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     bcrypt.hash(req.body.password, 10) // Hachage du mot de passe
         .then(hash => {
             const user = new User({
