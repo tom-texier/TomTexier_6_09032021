@@ -31,9 +31,9 @@ Compiled successfully.
 
 ### Pour l'application Backend :
 
-1. Rendez-vous dans le dossier *`backend`*
+1. Rendez-vous dans le dossier *`backend`* depuis la racine du projet
 ```
-cd ../backend
+cd backend
 ```
 
 2. Exécutez la commande *`npm i`*<br>
