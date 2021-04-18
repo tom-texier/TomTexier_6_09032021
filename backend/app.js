@@ -4,13 +4,14 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const dotend = require('dotenv').config();
 
 // Importer les routes
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
 // Connexion à la base de données
-mongoose.connect('mongodb+srv://sopekocko-user:7xu7g2JzLMUKzxCL@cluster0.lwwrz.mongodb.net/sopekocko?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

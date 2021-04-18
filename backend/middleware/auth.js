@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1]; // Récupérer le token de l'entête Authorization
-        const decodedToken = jwt.verify(token, 'mYq3t6w9z$B&E)H@McQfTjWnZr4u7x!A'); // Vérifier et décoder le token
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_TOKEN); // Vérifier et décoder le token
         const userId = decodedToken.userId; // Récupérer l'ID de l'utilisateur dans le token
         // Si l'ID de l'utilisateur qui effectue la requête ne correspond pas à l'ID utilisateur du token
         if (req.body.userId && req.body.userId !== userId) {
